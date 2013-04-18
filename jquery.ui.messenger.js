@@ -2,8 +2,8 @@
 * jQuery UI Messenger
 * @name jquery.ui.messenger.js
 * @author Mattia - http://www.matriz.it
-* @version 1.0.0
-* @date March 16, 2012
+* @version 1.0.1
+* @date August 10, 2012
 * @category jQuery plugin
 * @copyright (c) 2012 Mattia at Matriz.it (info@matriz.it)
 * @license MIT - http://opensource.org/licenses/mit-license.php
@@ -100,11 +100,7 @@
 							}
 						]);
 					}
-					div.find('input[name=prompt]').focus(function () {
-						$(document).bind('keydown', promptFocus);
-					}).blur(function () {
-						$(document).unbind('keydown', promptFocus);
-					}).focus();
+					div.find('input[name=prompt]').keydown(promptFocus).focus();
 					div.dialog('open');
 					return this;
 				}
