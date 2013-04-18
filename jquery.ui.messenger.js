@@ -2,8 +2,8 @@
 * jQuery UI Messenger
 * @name jquery.ui.messenger.js
 * @author Mattia - http://www.matriz.it
-* @version 1.0.1
-* @date August 10, 2012
+* @version 1.0.2
+* @date October 1, 2012
 * @category jQuery plugin
 * @copyright (c) 2012 Mattia at Matriz.it (info@matriz.it)
 * @license MIT - http://opensource.org/licenses/mit-license.php
@@ -76,8 +76,14 @@
 					});
 					div.html(options.html.replace(/\{TEXT\}/g, options.text).replace(/\{INPUT\}/g, $('<p />').append(inp.clone()).html())).dialog(options);
 					callbackPrompt = function (close, val) {
-						if (options.callback && $.isFunction(options.callback)) {
-							options.callback.call(this, typeof val === 'undefined' ? div.find('input[name=prompt]').val() : val);
+						var is_undefined = typeof val === 'undefined',
+							is_null = !is_undefined && val === null;
+						if (is_null) {
+							if (options.callbackCancel && $.isFunction(options.callbackCancel)) {
+								options.callbackCancel.call(this);
+							}
+						} else if (options.callback && $.isFunction(options.callback)) {
+							options.callback.call(this, is_undefined ? div.find('input[name=prompt]').val() : val);
 						}
 						if (close) {
 							div.data('closed', true);
