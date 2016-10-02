@@ -2,10 +2,10 @@
 * jQuery UI Messenger
 * @name jquery.ui.messenger.js
 * @author Mattia - http://www.matriz.it
-* @version 1.0.3
-* @date April 23, 2013
+* @version 1.0.4
+* @date September 16, 2016
 * @category jQuery plugin
-* @copyright (c) 2012 Mattia at Matriz.it (info@matriz.it)
+* @copyright (c) 2016 Mattia at Matriz.it (info@matriz.it)
 * @license MIT - http://opensource.org/licenses/mit-license.php
 * @example Visit http://www.matriz.it/projects/jquery-ui-messenger/ for more informations about this jQuery plugin
 */
@@ -73,7 +73,7 @@
 						'type': 'text',
 						'name': 'prompt',
 						'value': options.value
-					}).addClass('prompt_text');
+					}).addClass('prompt_text ui-widget-content ui-corner-all');
 					div.html(options.html.replace(/\{TEXT\}/g, options.text).replace(/\{INPUT\}/g, $('<p />').append(inp.clone()).html())).dialog(options);
 					callbackPrompt = function (close, val) {
 						var is_undefined = typeof val === 'undefined',
